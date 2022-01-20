@@ -1,8 +1,8 @@
 require 'spaceship'
 require 'csv'
 
-Spaceship::Tunes.login("")
-app = Spaceship::Application.find("")
+Spaceship::Tunes.login("your_AppleID_Email")
+app = Spaceship::Application.find("your_App_BundleID_ex_com.xxxx.aaa")
 
 # 批量修改被打回的商品
 def modify_iap_demo(app = nil, filePath, str)
@@ -14,7 +14,7 @@ def modify_iap_demo(app = nil, filePath, str)
     purch = app.in_app_purchases.find(mode["id"])
     e = purch.edit
     e.versions = {
-        'zh-CN': {
+        'zh-Hans': {
           name: mode["name"],
           description: mode["describe"] + str
         }
@@ -43,7 +43,7 @@ def create_iap(app = nil, iapMode)
   app.in_app_purchases.create!(
     type: iapType, 
     versions: {
-      'zh-CN': {
+      'zh-Hans': {
         name: product_name,
         description: description
       }
@@ -51,8 +51,8 @@ def create_iap(app = nil, iapMode)
     reference_name: product_name,
     product_id: product_id,
     cleared_for_sale: true,
-    review_notes: " ",
-    review_screenshot: "", 
+    review_notes: "IAP Items",
+    review_screenshot: "your_screenshot_image_path", 
     pricing_intervals: 
     [
       {
@@ -134,29 +134,5 @@ def create_iap_demo(app = nil, filePath)
 end
 
 # 执行
-create_iap_demo(app, '')
-modify_iap_demo(app, '', '。')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+create_iap_demo(app, 'your_csv_file_path')
+##modify_iap_demo(app, '', '。')

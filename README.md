@@ -5,11 +5,29 @@ iOS in-app-purchase tool, you can use it to upload iap or edit it through ruby s
 
 # 环境搭建
 
-安装 Xcode 工具
+1.安装 Xcode 工具
 xcode-select --install
 
-安装 fastlane
+2.安装 fastlane
 [sudo] gem install fastlane -NV
+
+注意: Mac安装会出现"ruby/config.h"报错，解决办法参考: https://qiita.com/kitoko552/items/bca3f487074711ff61fc
+
+```shell
+brew install rbenv ruby-build
+echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.zshrc 
+rbenv install 2.6.3
+rbenv global 2.6.3
+```
+
+`which gem` でパスが以下になっていなかったので、ターミナルを再起動して再度パスを確認後直った。
+
+```shell
+$ which gem
+/Users/<youruser>/.rbenv/shims/gem
+```
+
+
 
 # 准备工作
 
@@ -22,7 +40,7 @@ xcode-select --install
 现在只需要下面几部，就可以解放你的双手:
 1. 将 excel 文件格式转换为 .csv 文件（文件另存为，选择.csv 文件即可），文件配置格式见下面
 2. 将 .csv 文件用记事本打开，另存为，编码方式选择 UTF-8，解决中文乱码的问题
-3. 在脚本中，配置好你的 .csv 文件和iap商店图的路径
+3. 在脚本中，配置好你的 .csv 文件路径(代码137行)和iap商店图的路径(代码55行review_screenshot)
 4. 执行你的脚本 ruby your_script_path 
 
 **注：excel 配置格式**
@@ -51,15 +69,15 @@ modify_iap_demo(app, '/Users/shenjie/Desktop/mytest.csv', '.')
 app.in_app_purchases.create!(
     type: iapType, 
     versions: {
-      'zh-CN': {
+      'zh-Hans': {
         name: product_name,
         description: description
       }，
-      'zh-CN': {
+      'zh-Hans': {
         name: product_name,
         description: description
       }，
-      'zh-CN': {
+      'zh-Hans': {
         name: product_name,
         description: description
       }
@@ -81,7 +99,7 @@ app.in_app_purchases.create!(
   )
 ```
 
-其中对应语言地区代码可以参考：[对照表](https://github.com/ShenJieSuzhou/iOS_IAPTool/blob/master/doc/%E8%AF%AD%E8%A8%80%E5%9C%B0%E5%8C%BA%E4%BB%A3%E7%A0%81%E8%A1%A8.txt)
+其中对应语言地区代码可以参考：[RFC 5646 Language Code](https://help.apple.com/asc/appsspec/en.lproj/static.html#itce40fff472)
 
 
 2.若很不巧你的 app 被苹果打回了，你新加的商品也被打回需要开发者操作，你就可以使用
