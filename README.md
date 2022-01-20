@@ -45,7 +45,10 @@ $ which gem
 
 **注：excel 配置格式**
 
-<img src="https://github.com/ShenJieSuzhou/iOS_IAPTool/blob/master/screenshot/screenshot3.png">
+<img src="https://github.com/xiongdi9456/iOS_IAPTool/blob/master/screenshot/screenshot3.png">
+
+
+<img src="https://github.com/xiongdi9456/iOS_IAPTool/blob/master/screenshot/screenshot4.png">
 
 # 开始使用
 在脚本的开头，需要配置你自己的账号与游戏信息
@@ -58,11 +61,11 @@ app = Spaceship::Application.find("your app bundleid")
 ```
 create_iap_demo(app, '/Users/shenjie/Desktop/mytest.csv')
 
-modify_iap_demo(app, '/Users/shenjie/Desktop/mytest.csv', '.')
+###modify_iap_demo(app, '/Users/shenjie/Desktop/mytest.csv', '.')
 ```
 1.创建 iap 商品时，传入配置好的 csv 文件，选择 create_iap_demo 执行脚本
 
-<img src="https://github.com/ShenJieSuzhou/iOS_IAPTool/blob/master/screenshot/screenshot1.png">
+<img src="https://github.com/xiongdi9456/iOS_IAPTool/blob/master/screenshot/screenshot1.png">
 
 如果你有多个本地化操作，你可以在脚本中加入自定义的本地化：
 ```
@@ -108,7 +111,7 @@ modify_iap_demo(app, '/Users/shenjie/Desktop/mytest.csv', '.')
 ```
 修改每个商品的描述，最简单的就是为其添加一个 ‘.’ 或者删除一个 ‘.’
 
-<img src="https://github.com/ShenJieSuzhou/iOS_IAPTool/blob/master/screenshot/screenshot2.png">
+<img src="https://github.com/xiongdi9456/iOS_IAPTool/blob/master/screenshot/screenshot2.png">
 
 # 其它
 
